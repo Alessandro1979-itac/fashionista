@@ -45,6 +45,10 @@ export default () => {
   const handleCloseSearchPage = useCallback(() =>{
     setShowSearch(false);
     setSearchText('');
+  }, []);
+
+  useEffect(() =>{
+    showSearch && inputRef.current.focus();
   }, [showSearch]);
 
   return (

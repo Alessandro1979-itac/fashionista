@@ -2,6 +2,20 @@
   display: grid;
   place-content: center;
   height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.product__container .link-back {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.product__container .link-back--hover:hover {
+  color: rgb(180, 180, 180);
 }
 
 .detail__container {

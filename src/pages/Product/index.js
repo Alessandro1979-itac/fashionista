@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { BsArrowLeft } from 'react-icons/bs';
+import { useParams, useHistory, Link } from 'react-router-dom';
 
 import './styles.css';
-import isLoading from '../../components/Loading';
+import Loading from '../../components/Loading';
 import { addToCart } from '../../store/reducers/cart/actions';
 import getData from '../../services/api';
 import Image from '../../components/Image';
-import Loading from '../../components/Loading';
 
 export default () => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default () => {
   const [actualSize, setActualSize] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() =>{
+  useEffect(() => {
     const loadData = async () => {
       setIsLoading(true);
       const products = await getData();
@@ -68,7 +68,7 @@ export default () => {
   }, [actualSize, dispatch, product]);
 
   const handleChangeSize = useCallback(size => setActualSize(size), []);
-  const sizesAvailable = useMemo(() => product?.size?.filter(
+  const sizesAvailable = useMemo(() => product?.sizes?.filter(
     size => !!size.available), [product],);
   
   return (
@@ -94,7 +94,7 @@ export default () => {
               <p className="size__title">Escolha o tamanho</p>
               <div className="size__container">
                 {sizesAvailable.map(size => {
-                  const class_name = `detail__size ${size.sku === actualSize ?
+                  const class_name = `detail__size ${size.sku === actualSize.sku ?
                     'detail__size--selected' : ''
                   }`;
                   return(
@@ -139,6 +139,10 @@ export default () => {
               </div>
             </div>
           </div>
+          <Link to='/' className="link-back link-back--hover">
+            <BsArrowLeft size={24} />
+            Voltar para a home
+          </Link>
         </div>
       )}
     </main>
