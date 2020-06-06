@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-import './styles.css';
+//import './styles.css';
 
 import Modal from '../Modal';
 import CartItem from '../CartItem';
