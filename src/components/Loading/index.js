@@ -5,12 +5,12 @@ import './styles.css';
 const Loading = () => (
   <div className="loading" data-testid="loading">
     <div className="preloader">
-      <span />
-      <span />
-      <span />
-      <span />
-      <span />
-      <span />
+      <span className="preloader__bar" />
+      <span className="preloader__bar" />
+      <span className="preloader__bar" />
+      <span className="preloader__bar" />
+      <span className="preloader__bar" />
+      <span className="preloader__bar" />
     </div>
     Carregando...
   </div>
