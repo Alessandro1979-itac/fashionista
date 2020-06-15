@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { BsSearch } from 'react-icons/bs';
 
 import './styles.css';
 import SearchItem from '../SearchItem';
@@ -42,7 +43,7 @@ export default () => {
     setShowSearch(true);
   }, []);
 
-  const handleCloseSearchPage = useCallback(() =>{
+  const handleCloseSearchPage = useCallback(() => {
     setShowSearch(false);
     setSearchText('');
   }, []);
@@ -59,7 +60,7 @@ export default () => {
         aria-label="Search"
         onClick={showSearchPage}
       >
-        <i className="fas fa-search"></i>
+        <BsSearch />
       </button>
       {showSearch && (
         <Modal title="Pesquisa" onCloseModal={handleCloseSearchPage}>
@@ -73,7 +74,7 @@ export default () => {
                 onChange={evt => setSearchText(evt.target.value)}
                 ref={inputRef}
               />
-              <i className="fas fa-search"></i>
+              <BsSearch />
             </div>
 
             <div className="result">
