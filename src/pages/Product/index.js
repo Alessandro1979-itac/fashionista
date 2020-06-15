@@ -70,80 +70,80 @@ export default () => {
   const handleChangeSize = useCallback(size => setActualSize(size), []);
   const sizesAvailable = useMemo(() => product?.sizes?.filter(
     size => !!size.available), [product],);
-  
+
   return (
-    <main className="container">
+    <>
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="product__container">
-          <Link to='/' className="link-back link-back--hover">
-            <BsArrowLeft size={30} />
-          </Link>
-          <div className="detail__container">
-            {/* <img
-              className="detail__image"
-              src={product.image_url}
-              alt={product.name}
-            /> */}
-            <Image
-              imageUrl={product.image_url}
-              alternateText={product.name}
-              styleClass="detail__image"
-            />
+        <main className="container">
+          <div className="product__container">
+            <Link to='/' className="link-back link-back--hover">
+              <BsArrowLeft size={30} />
+            </Link>
+            <div className="detail__container">
+              <Image
+                imageUrl={product.image_url}
+                alternateText={product.name}
+                styleClass="detail__image"
+              />
 
-            <div className="detail__product">
-              <p className="detail__title">{product.name}</p>
-              <p className="size__title">Escolha o tamanho</p>
-              <div className="size__container">
-                {sizesAvailable.map(size => {
-                  const class_name = `detail__size ${size.sku === actualSize.sku ?
-                    'detail__size--selected' : ''
-                  }`;
-                  return(
-                    <button
-                      type="button"
-                      className={class_name}
-                      key={size.sku}
-                      onClick={() => handleChangeSize(size)}
-                    >
-                      {size.size}
-                    </button>
-                  );
-                })}
-              </div>
-
-              <div className="value__container">
-                {!!product.on_sale && (
-                  <label className="value__regular">{product.regular_price}</label>
-                )}
-                <label className="value__actual">{product.actual_price}
-                  {product.discount_percentage && (
-                    <span className="discount__percentage">
-                      {' '}
-                      (-{product.discount_percentage})
-                    </span>
+              <div className="detail__product">
+                <p className="detail__title">{product.name}</p>
+                <p className="size__title">Escolha o tamanho</p>
+                <div className="size__container">
+                  {sizesAvailable.map(size => {
+                    const class_name = `detail__size ${
+                      size.sku === actualSize.sku
+                        ? 'detail__size--selected'
+                        : ''
+                    }`;
+                    return (
+                      <button
+                        type="button"
+                        className={class_name}
+                        key={size.sku}
+                        onClick={() => handleChangeSize(size)}
+                      >
+                        {size.size}
+                      </button>
+                    );
+                  })}
+                </div>
+                <div className="value__container">
+                  {!!product.on_sale && (
+                    <label className="value__regular">
+                      {product.regular_price}
+                    </label>
                   )}
-                </label>
-                <label className="value__installments">
-                  Em até {product.installments} sem juros
-                </label>
-              </div>
-
-              <div className="shop__action">
-                <button
-                  type="button"
-                  className="detail__buy"
-                  onClick={handleAddToCart}
-                  disabled={!actualSize}
-                >
-                  Comprar
-                </button>
+                  <label className="value__actual">
+                    {product.actual_price}
+                    {product.discount_percentage && (
+                      <span className="discount__percentage">
+                        {' '}
+                        (-{product.discount_percentage})
+                      </span>
+                    )}
+                  </label>
+                  <label className="value__installments">
+                    Em até {product.installments} sem juros
+                  </label>
+                </div>
+                <div className="shop__action">
+                  <button
+                    type="button"
+                    className="detail__buy"
+                    onClick={handleAddToCart}
+                    disabled={!actualSize}
+                  >
+                    Comprar
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </main>
       )}
-    </main>
+    </>
   );
-}
+};
