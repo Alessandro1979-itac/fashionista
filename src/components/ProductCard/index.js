@@ -14,11 +14,6 @@ const ProductCard = ({ product }) => {
             alternateText={product.name}
             styleClass="product__image"
           />
-          {/* <img
-            className="product__image"
-            src={product.image_url}
-            alt={product.name}
-          /> */}
           {!!product.on_sale && (
             <div className="product__badge">
               <span>{product.discount_percentage}</span>
