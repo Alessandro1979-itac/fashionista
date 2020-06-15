@@ -16,7 +16,6 @@ export default () => {
     () => cart.reduce((total, item) => total + item.amount, 0),
     [cart],
   );
-
   const cartTotal = useMemo(
     () =>
       cart.reduce(
@@ -26,7 +25,7 @@ export default () => {
         }),
         { quantity: 0, total: 0 },
       ),
-      [cart],
+    [cart],
   );
 
   const showCartPage = useCallback(() => {
@@ -79,4 +78,4 @@ export default () => {
       )}
     </>
   );
-}
+};

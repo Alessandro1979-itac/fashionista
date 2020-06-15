@@ -7,7 +7,7 @@ export default ({ imageUrl, alternateText, styleClass }) => (
     src={imageUrl}
     alt={alternateText}
     className={styleClass}
-    wrapperClassName={{ style: { display: 'contents' } }}
+    wrapperProps={{ style: { display: 'contents' } }}
     effect="blur"
   />
 );

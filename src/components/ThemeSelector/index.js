@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { MdColorLens } from 'react-icons/md';
 
-import { setTheme  } from '../../store/reducers/theme/actions';
+import { setTheme } from '../../store/reducers/theme/actions';
 
 const themes = {
   light: {
@@ -25,13 +25,15 @@ const themes = {
   },
 };
 
-export default ({ currentTheme  }) => {
+export default ({ currentTheme }) => {
   const [theme, setNewTheme] = useState(currentTheme);
+
   const dispatch = useDispatch();
+
   const applyTheme = useCallback(() => {
     const selectedThemeColors = themes[theme];
     Object.keys(selectedThemeColors).forEach(key => {
-      const cssKey = `${key}`;
+      const cssKey = `--${key}`;
       const cssValue = selectedThemeColors[key];
       document.body.style.setProperty(cssKey, cssValue);
     });

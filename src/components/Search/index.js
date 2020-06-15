@@ -3,7 +3,7 @@ import React, {
   useState,
   useMemo,
   useRef,
-  useEffect
+  useEffect,
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -20,11 +20,13 @@ export default () => {
   const history = useHistory();
   const products = useSelector(state => state.products);
   const searchResult = useMemo(
-    () => searchText === ''
-    ? []
-    : products.filter(
-      p => p.name.toLowerCase().indexOf(searchText.toLowerCase()) !== - 1,
-    ), [products, searchText],
+    () =>
+      searchText === ''
+        ? []
+        : products.filter(
+            p => p.name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1,
+          ),
+    [products, searchText],
   );
 
   const hasProductsToShow = useMemo(() => searchResult.length > 0, [
@@ -36,9 +38,9 @@ export default () => {
       history.push(`/product/${product.slug}`);
       setShowSearch(false);
       setSearchText('');
-    }, [history],
+    },
+    [history],
   );
-
   const showSearchPage = useCallback(() => {
     setShowSearch(true);
   }, []);
@@ -48,7 +50,7 @@ export default () => {
     setSearchText('');
   }, []);
 
-  useEffect(() =>{
+  useEffect(() => {
     showSearch && inputRef.current.focus();
   }, [showSearch]);
 
@@ -76,7 +78,6 @@ export default () => {
               />
               <BsSearch />
             </div>
-
             <div className="result">
               {hasProductsToShow && (
                 <ul>

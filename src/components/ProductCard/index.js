@@ -20,7 +20,6 @@ const ProductCard = ({ product }) => {
             </div>
           )}
         </div>
-
         <div className="product__description">
           <p className="product__name">{product.name}</p>
           <div className="product__price">
@@ -33,6 +32,6 @@ const ProductCard = ({ product }) => {
       </div>
     </Link>
   );
-}
+};
 
 export default ProductCard;

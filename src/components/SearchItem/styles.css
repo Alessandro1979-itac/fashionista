@@ -4,6 +4,7 @@
   overflow: hidden;
   background-color: var(--alternate-background);
   color: var(--text-color);
+  border: 1px solid var(--alternate-background);
   margin-top: 8px;
 }
 

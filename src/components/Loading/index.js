@@ -12,7 +12,7 @@ const Loading = () => (
       <span className="preloader__bar" />
       <span className="preloader__bar" />
     </div>
-    Carregando...
+    Carregando
   </div>
 );
 

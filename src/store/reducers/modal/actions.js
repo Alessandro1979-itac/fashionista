@@ -1,7 +1,7 @@
 export const showModal = () => ({
-  type: 'SHOW_MODAL',
+  type: "SHOW_MODAL",
 });
 
 export const closeModal = () => ({
-  type: 'CLOSE_MODAL',
+  type: "CLOSE_MODAL",
 });

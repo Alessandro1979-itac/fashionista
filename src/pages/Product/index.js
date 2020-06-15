@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
-import { BsArrowLeft } from 'react-icons/bs';
 import { useParams, useHistory, Link } from 'react-router-dom';
+import { BsArrowLeft } from 'react-icons/bs';
 
 import './styles.css';
 import Loading from '../../components/Loading';
+
 import { addToCart } from '../../store/reducers/cart/actions';
 import getData from '../../services/api';
 import Image from '../../components/Image';
@@ -13,6 +14,7 @@ export default () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { slug } = useParams();
+
   const [product, setProduct] = useState({});
   const [actualSize, setActualSize] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -24,7 +26,6 @@ export default () => {
       if (products?.length === 0) {
         history.push('/');
       }
-      
       const product = products.find(p => p.slug === slug);
       if (!product) {
         history.push('/');
@@ -50,7 +51,6 @@ export default () => {
       price,
     } = product;
     const { size, sku } = actualSize;
-
     dispatch(
       addToCart({
         sku,
@@ -68,8 +68,10 @@ export default () => {
   }, [actualSize, dispatch, product]);
 
   const handleChangeSize = useCallback(size => setActualSize(size), []);
-  const sizesAvailable = useMemo(() => product?.sizes?.filter(
-    size => !!size.available), [product],);
+  const sizesAvailable = useMemo(
+    () => product?.sizes?.filter(size => !!size.available),
+    [product],
+  );
 
   return (
     <>
@@ -78,7 +80,7 @@ export default () => {
       ) : (
         <main className="container">
           <div className="product__container">
-            <Link to='/' className="link-back link-back--hover">
+          <Link to='/' className="link-back link-back--hover">
               <BsArrowLeft size={30} />
             </Link>
             <div className="detail__container">
