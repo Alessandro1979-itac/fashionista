@@ -77,6 +77,9 @@ export default () => {
         <Loading />
       ) : (
         <div className="product__container">
+          <Link to='/' className="link-back link-back--hover">
+            <BsArrowLeft size={30} />
+          </Link>
           <div className="detail__container">
             {/* <img
               className="detail__image"
@@ -139,10 +142,6 @@ export default () => {
               </div>
             </div>
           </div>
-          <Link to='/' className="link-back link-back--hover">
-            <BsArrowLeft size={24} />
-            Voltar para a home
-          </Link>
         </div>
       )}
     </main>
