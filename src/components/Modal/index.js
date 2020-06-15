@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 import './styles.css';
 
@@ -8,7 +9,7 @@ const Modal = React.memo(({ children, onCloseModal, title }) => {
       <div className="modal__container">
         <div className="modal__header">
           <button onClick={onCloseModal} className="header__button">
-            <i className="fas fa-arrow-left"></i>
+            <AiOutlineArrowLeft />
           </button>
           <span className="header__title">{title}</span>
         </div>
