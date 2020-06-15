@@ -1,7 +1,8 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import { BsBag } from 'react-icons/bs';
 
-//import './styles.css';
+import './styles.css';
 
 import Modal from '../Modal';
 import CartItem from '../CartItem';
@@ -48,7 +49,7 @@ export default () => {
         aria-label="Cart"
         onClick={showCartPage}
       >
-        <i className="fas fa-shopping-bag"></i>
+        <BsBag />
         <span className="cart__quantity">{cartSize}</span>
       </button>
       {showCart && (

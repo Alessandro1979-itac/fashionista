@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import { FiMinusCircle, FiPlusCircle } from 'react-icons/fi';
 
 import './styles.css';
 
@@ -31,9 +32,9 @@ export default ({ item }) => {
 
   return (
     <div className="item__container">
-      <figure>
+      <figure className="thumb__container">
         <img className="item__image" src={item.image_url} alt={item.name} />
-        <button type="button" onClick={() => remove(item.sku)}>
+        <button className="delete__button" type="button" onClick={() => remove(item.sku)}>
           Excluir item
         </button>
       </figure>
@@ -50,13 +51,13 @@ export default ({ item }) => {
         </div>
 
         <div className="item__amount">
-          <div>
-            <button type="button" onClick={() => decrement(item)}>
-              <i className="fas fa-minus-circle"></i>
+          <div style={{ display: 'flex' }}>
+            <button className="amount__operation" type="button" onClick={() => decrement(item)}>
+              <FiMinusCircle />
             </button>
-            <span>{item.amount}</span>
-            <button type="button" onClick={() => increment(item)}>
-              <i className="fas fa-plus-circle"></i>
+            <span className="amount__quantity">{item.amount}</span>
+            <button className="amount__operation" type="button" onClick={() => increment(item)}>
+              <FiPlusCircle />
             </button>
           </div>
 

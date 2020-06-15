@@ -1,6 +1,6 @@
 .cart__container {
   max-height: calc(100vh - 13rem);
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .cart__total {
