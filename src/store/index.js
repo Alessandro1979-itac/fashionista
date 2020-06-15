@@ -1,13 +1,18 @@
-import { combineReducers } from 'redux';
+import { createStore } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-import cart from './cart/reducer';
-import modal from './modal/reducer';
-import products from './products/reducer';
-import theme from './theme/reducer';
+import rootReducer from './reducers';
 
-export default combineReducers ({
-  cart,
-  modal,
-  products,
-  theme,
-});
+const persistConfig = {
+  key: '@fashionista/cart',
+  whitelist: ['cart', 'theme'],
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = createStore(persistedReducer);
+const persistor = persistStore(store);
+
+export { store, persistor };

@@ -13,7 +13,7 @@ import { store, persistor } from './store';
 export default function App() {
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={<Loading />} persistor={persistor}>
         <BrowserRouter>
           <Header />
           <Routes />
